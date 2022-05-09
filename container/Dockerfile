@@ -10,7 +10,7 @@ LABEL io.while-true-do.mail="hello@while-true-do.io"
 # Adding authors is recommended
 LABEL io.while-true-do.image.authors="dschier@while-true-do.io"
 
-RUN apk add --no-cache "openjdk17-jre-17>=17"
+RUN apk add --no-cache "openjdk17-jre>=17"
 
 COPY files/usr/ /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
