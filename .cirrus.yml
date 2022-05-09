@@ -79,15 +79,9 @@ stable_docker_builder:
             $CIRRUS_TAG != '' &&
             $CIRRUS_ENVIRONMENT != 'CLI'"
   depends_on:
-    - "Lint Markdown"
-    - "Lint YAML"
-    - "Lint CSS"
-    - "Lint HTML"
+    - "Lint Shell"
     - "Lint Containerfile"
     - "Scan Containerfile"
-    - "Lint Kubernetes Files"
-    - "Scan Kubernetes Files"
-    - "Test Image"
   info_script: "docker info"
   login_script: "docker login
                 --username $DOCKER_USERNAME
