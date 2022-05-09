@@ -1,4 +1,6 @@
 ---
+# reference: https://github.com/hadolint/hadolint
+
 ignored:
   - "DL3008"
 ...
