@@ -1,0 +1,261 @@
+################################################
+# Container                                    #
+################################################
+
+# Accept the Minecraft Server EULA
+# values: true|false
+#EULA=false
+
+# Minimum memory allocation for Java
+# values: 512M, 1024M, 2048M, etc...
+#XMS=1024M
+
+# Maximum memory allocation for Java
+# values: 512M, 1024M, 2048M, etc...
+#XMX=1024M
+
+# The start of the container creates a configuration, even if it was tuned
+# manually. You can adjust this behavior.
+# values: true|false
+#CREATE_CONF=true
+
+################################################
+# Gameplay                                     #
+################################################
+
+# Allows users to use flight on the server while in Survival mode, if they have
+# a mod installed that provides flight.
+# values: true|false
+#ALLOW_FLIGHT=false
+
+# Allows players to travel to the Nether.
+# values: true|false
+#ALLOW_NETHER=true
+
+# Define the difficulty.
+# values: peaceful|easy|normal|hard
+#DIFFICULTY=easy
+
+# Enable command blocks
+# values: true|false
+#ENABLE_COMMAND_BLOCK=false
+
+# Make the server appear as "online" on tge Minecraft server list.
+# values: true|false
+#ENABLE_STATUS=true
+
+# Controls how close entities need to be before being sent to clients.
+# values: 10-1000
+#ENTITY_BROADCAST_RANGE_PERCENTAGE=100
+
+# Force players to join in the default game mode.
+# values: true|false
+#FORCE_GAMEMODE=false
+
+# Defines the mode of gameplay.
+# values: survical|creative|adventure|spectator
+#GAMEMODE=survival
+
+# Defines whether structures (such as villages) can be generated.
+# values: true|false
+#GENERATE_STRUCTURES=true
+
+# Generator settings, according to this format:
+# https://minecraft.fandom.com/wiki/Java_Edition_level_format#generatorOptions_tag_format
+#GENERATOR_SETTINGS=""
+
+# If set to true, server difficulty is ignored and set to hard and players are
+# set to spectator mode if they die.
+# values: true|false
+#HARDCORE=false
+
+# The "level-name" value is used as the world name and its folder name.
+# values: STRING
+#LEVEL_NAME=world
+
+# Sets a world seed for the player's world, as in Singleplayer. The world
+# generates with a random seed if left blank.
+#LEVEL_SEED=""
+
+# Determines the type of map that is generated.
+# values: default|flat|largeBiomes|amplified
+#LEVEL_TYPE=default
+
+# The maximum height allowed for building. Terrain may still naturally generate
+# above a low height limit. 256 is the maximum possible, it also has to be a
+# multiple of 8.
+#MAX_BUILD_HEIGHT:-256
+
+# This sets the maximum possible size in blocks, expressed as a radius, that the
+# world border can obtain.
+# values: 1-29999984
+#MAX_WORLD_SIZE=29999984
+
+# This is the message that is displayed in the server list of the client, below
+# the name.
+# values: STRING
+#MOTD=A Minecraft Server
+
+# Enable PvP on the server. Players shooting themselves with arrows receive
+# damage only if PvP is enabled.
+# values: true|false
+#PVP=true
+
+# Determines if animals can spawn.
+# values: true|false
+#SPAWN_ANIMALS="true"
+
+# Determines if monsters can spawn.
+# values: true|false
+#SPAWN_MONSTERS=true
+
+# Determines whether villagers can spawn.
+# values: true|false
+#SPAWN_NPCS=true
+
+# Determines the side length of the square spawn protection area as 2x+1.
+# Setting this to 0 disables the spawn protection. A value of 1 protects a 3×3
+# square centered on the spawn point. 2 protects 5×5, 3 protects 7×7, etc. If
+# there are no ops set on the server, the spawn protection is disabled
+# automatically as well.
+#SPAWN_PROTECTION=16
+
+# Sets the amount of world data the server sends the client, measured in chunks
+# in each direction of the player.
+#VIEW_DISTANCE=10
+
+################################################
+# Resource Packs                               #
+################################################
+
+# Optional URI to a resource pack. The player may choose to use it.
+# values: URL|URI
+#RESOURCE_PACK=""
+
+# Optional, adds a custom message to be shown on resource pack prompt when
+# require-resource-pack is used.
+# values: STRING
+#RESOURCE_PACK_PROMPT=""
+
+# Optional SHA-1 digest of the resource pack, in lowercase hexadecimal. It is
+# recommended to specify this, because it is used to verify the integrity of the
+# resource pack.
+#RESOURCE_PACK_SHA1=""
+
+# When this option is enabled (set to true), players will be prompted for a
+# response and will be disconnected if they decline the required pack.
+# values: true|false
+#REQUIRE_RESOURCE_PACK="false"
+
+################################################
+# Player & Operators                           #
+################################################
+
+# Send console command outputs to all online operators.
+# values: true|false
+#BROADCAST_CONSOLE_TO_OPS=true
+
+# Send rcon console command outputs to all online operators.
+# values: true|false
+#BROADCAST_RCON_TO_OPS=true
+
+# When this option is enabled, users who are not present on the whitelist
+# (if it's enabled) get kicked from the server after the server reloads the
+# whitelist file.
+# values: true|false
+#ENFORCE_WHITELIST=false
+
+# Sets the default permission level for functions.
+# values: 1-4
+#FUNCTION_PERMISSION_LEVEL=2
+
+# The maximum number of players that can play on the server at the same time.
+# More players = more resource consumption.
+# values: 0-2147483647
+#MAX_PLAYERS=20
+
+# Server checks connecting players against Minecraft account database.
+# values: true|false
+#ONLINE_MODE=true
+
+# Sets the default permission level for ops when using /op.
+# values: 1-4
+#OP_PERMISSION_LEVEL=4
+
+# If non-zero, players are kicked from the server if they are idle for more than
+# that many minutes.
+#PLAYER_IDLE_TIMEOUT=0
+
+# Enables a whitelist on the server.
+# values: true|false
+#WHITE_LIST=false
+
+################################################
+# Server                                       #
+################################################
+
+# Enables GameSpy4 protocol server listener.
+# values: true|false
+#ENABLE_QUERY=false
+
+# Enables remote access to the server console. NOT recommended!
+# values: true|false
+#ENABLE_RCON=false
+
+# The maximum number of milliseconds a single tick may take before the server
+# watchdog stops.
+# values: -1|INTEGER
+#MAX_TICK_TIME=60000
+
+# Packet size threshold for packet compression.
+# values: -1|INTEGER
+#NETWORK_COMPRESSION_THRESHOLD=256
+
+# If the ISP/AS sent from the server is different from the one from Mojang
+# Studios' authentication server, the player is kicked.
+# values: true|false
+#PREVENT_PROXY_CONNECTIONS=false
+
+# Sets the port for the query server.
+# values: PORT
+#QUERY_PORT=25565
+
+# Sets the maximum amount of packets a user can send before getting kicked.
+# Setting to 0 disables this feature.
+#RATE_LIMIT=0
+
+# Sets the password for RCON.
+# values: STRING
+#RCON_PASSWORD=""
+
+# Sets the RCON network port.
+# values: PORT
+#RCON_PORT=25575
+
+# Set this if you want the server to bind to a particular IP.
+# values: IPADDRESS
+#SERVER_IP=
+
+# Changes the port the server is hosting (listening) on.
+# values: PORT
+#SERVER_PORT=25565
+
+# Sets whether the server sends snoop data regularly to http://snoop.minecraft.net.
+# values: true|false
+#SNOOPER_ENABLED=false
+
+# Enables synchronous chunk writes.
+# values: true|false
+#SYNC_CHUNK_WRITES=true
+
+# Linux server performance improvements: optimized packet sending/receiving on
+# Linux. 
+# values: true|false
+#USE_NATIVE_TRANSPORT=true
+
+################################################
+# Debug                                     #
+################################################
+
+# values: true|false
+#ENABLE_JMX_MONITORING=false

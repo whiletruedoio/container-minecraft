@@ -1,0 +1,102 @@
+---
+# reference: https://cirrus-ci.org/guide/writing-tasks/
+
+container:
+  cpu: 1
+  memory: "2G"
+
+# Sanity checks
+lint_markdown_task:
+  name: "Lint Markdown"
+  container:
+    image: "docker.io/library/node:current-alpine"
+  install_script: "npm install -g markdownlint-cli"
+  test_script: "markdownlint *.md docs/*.md"
+
+lint_yaml_task:
+  name: "Lint YAML"
+  container:
+    image: "docker.io/library/alpine:3"
+  install_script: "apk add --no-cache yamllint"
+  test_script: "yamllint ."
+
+lint_shell_task:
+  name: "Lint Shell"
+  container:
+    image: "docker.io/library/alpine:3"
+  install_script: "apk add --no-cache shellcheck"
+  test_script: "shellcheck container/files/usr/*.sh"
+
+lint_containerfile_task:
+  name: "Lint Containerfile"
+  container:
+    image: "docker.io/hadolint/hadolint:latest-alpine"
+  test_script: "hadolint container/Dockerfile"
+
+scan_containerfile_task:
+  name: "Scan Containerfile"
+  container:
+    image: "docker.io/aquasec/trivy:0.22.0"
+  scan_script: "trivy config
+                --severity CRITICAL
+                --exit-code 1
+                container/"
+
+# Build
+env:
+  DOCKER_HUB_IMAGE: "docker.io/whiletruedoio/minecraft"
+  # yamllint disable-line rule:line-length
+  DOCKER_USERNAME: "ENCRYPTED[!f1238a40d68755898657f4c8e7dec33b437663f11856728ba961174636ae1c3ebf83cd07264480614e59a3a19dadb265!]"
+  # yamllint disable-line rule:line-length
+  DOCKER_PASSWORD: "ENCRYPTED[!ba694a81b388c14ab792c378a7f32a36e3d216a393c4b67dcc7e3eadf76d7ec24d9b9ffe7c4cde7cea4abcd4b655e959!]"
+
+# Release
+devel_docker_builder:
+  name: "Deliver Devel Image"
+  only_if: "$CIRRUS_BRANCH == $CIRRUS_DEFAULT_BRANCH &&
+            $CIRRUS_TAG == '' &&
+            $CIRRUS_ENVIRONMENT != 'CLI'"
+  depends_on:
+    - "Test Image"
+  info_script: "docker info"
+  login_script: "docker login
+                --username $DOCKER_USERNAME
+                --password $DOCKER_PASSWORD
+                docker.io"
+  build_script: "docker image build
+                --cache-from $DOCKER_HUB_IMAGE:latest
+                --tag $DOCKER_HUB_IMAGE:devel
+                container/"
+  push_script: "docker image push
+                --all-tags
+                $DOCKER_HUB_IMAGE"
+
+stable_docker_builder:
+  name: "Deliver Stable Image"
+  only_if: "$CIRRUS_BRANCH == $CIRRUS_DEFAULT_BRANCH &&
+            $CIRRUS_TAG != '' &&
+            $CIRRUS_ENVIRONMENT != 'CLI'"
+  depends_on:
+    - "Lint Markdown"
+    - "Lint YAML"
+    - "Lint CSS"
+    - "Lint HTML"
+    - "Lint Containerfile"
+    - "Scan Containerfile"
+    - "Lint Kubernetes Files"
+    - "Scan Kubernetes Files"
+    - "Test Image"
+  info_script: "docker info"
+  login_script: "docker login
+                --username $DOCKER_USERNAME
+                --password $DOCKER_PASSWORD
+                docker.io"
+  build_script: "docker image build
+                --cache-from $DOCKER_HUB_IMAGE:latest
+                --tag $DOCKER_HUB_IMAGE:latest
+                --tag $DOCKER_HUB_IMAGE:$CIRRUS_TAG
+                container/"
+  push_script: "docker image push
+                --all-tags
+                $DOCKER_HUB_IMAGE"
+...
