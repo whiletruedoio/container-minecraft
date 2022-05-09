@@ -57,7 +57,9 @@ devel_docker_builder:
             $CIRRUS_TAG == '' &&
             $CIRRUS_ENVIRONMENT != 'CLI'"
   depends_on:
-    - "Test Image"
+    - "Lint Shell"
+    - "Lint Containerfile"
+    - "Scan Containerfile"
   info_script: "docker info"
   login_script: "docker login
                 --username $DOCKER_USERNAME

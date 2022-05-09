@@ -3,6 +3,14 @@ reference: https://www.makeareadme.com/
 reference: https://commonmark.org/
 -->
 
+[![Cirrus CI - Base Branch Build Status](https://img.shields.io/cirrus/github/whiletruedoio/container-minecraft?logo=Cirrus-ci)](https://cirrus-ci.com/github/whiletruedoio/container-minecraft)
+[![CodeFactor](https://www.codefactor.io/repository/github/whiletruedoio/container-minecraft/badge)](https://www.codefactor.io/repository/github/whiletruedoio/container-minecraft)
+[![Docker Image Version](https://img.shields.io/docker/v/whiletruedoio/minecraft?logo=Docker&label=Release&sort=semver)](https://hub.docker.com/r/whiletruedoio/minecraft)
+[![GitHub Tag (latest SemVer)](https://img.shields.io/github/v/tag/whiletruedoio/container-minecraft?logo=GitHub&label=Release&sort=semver)](https://github.com/whiletruedoio/container-minecraft/releases)
+[![GitHub issues](https://img.shields.io/github/issues/whiletruedoio/container-minecraft)](https://github.com/whiletruedoio/container-minecraft/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/whiletruedoio/container-minecraft)](https://github.com/whiletruedoio/container-minecraft/pulls)
+[![GitHub license](https://img.shields.io/github/license/whiletruedoio/container-minecraft)](https://github.com/whiletruedoio/container-minecraft/blob/main/LICENSE)
+
 # Container: Minecraft
 
 Minecraft server as container image.
