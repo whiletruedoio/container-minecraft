@@ -9,7 +9,39 @@ This file is the changelog of
 
 ## [Unreleased]
 
+## [1.19.0] - 20220716
+
+This release includes Minecraft 1.19 and also some minor adjustments for the
+handling of versions.
+
+### Added
+
+- enforce-secure-profile configuration option (default: true)
+- hide-online-players configuration option (default: false)
+- max-chained-neighbor-updates configuration option (default: 1000000)
+- previews-chat configuration option (default: false)
+- simulation-distance configuration option (default: 10)
+
+### Changed
+
+- Minecraft Version is 1.19
+- Variables for minecraft version and url are no longer in the entrypoint, but
+  in the Dockerfile
+- configuration paramaters updated to match 1.19
+- configuration parameters in envfile and entrypoint adjusted to the order of
+  the wiki (mostly alphabetical)
+- configuration option "level-type" changed to new behavior
+  (default: minecraft:normal)
+- Documentation slightly adjusted
+
+### Removed
+
+- max-build-height configuration option
+
+## [1.18.2] - 20220509
+
 - Initial setup
+- Includes Minecraft 1.18.2
 
 ## [MAJOR.MINOR.PATCH-LABEL] - YYYYMMDD
 

@@ -32,17 +32,46 @@
 # values: true|false
 #ALLOW_NETHER=true
 
+# Send console command outputs to all online operators.
+# values: true|false
+#BROADCAST_CONSOLE_TO_OPS=true
+
+# Send rcon console command outputs to all online operators.
+# values: true|false
+#BROADCAST_RCON_TO_OPS=true
+
 # Define the difficulty.
 # values: peaceful|easy|normal|hard
 #DIFFICULTY=easy
+
+# values: true|false
+#ENABLE_JMX_MONITORING=false
 
 # Enable command blocks
 # values: true|false
 #ENABLE_COMMAND_BLOCK=false
 
+# Enables remote access to the server console. NOT recommended!
+# values: true|false
+#ENABLE_RCON=false
+
 # Make the server appear as "online" on tge Minecraft server list.
 # values: true|false
 #ENABLE_STATUS=true
+
+# Enables GameSpy4 protocol server listener.
+# values: true|false
+#ENABLE_QUERY=false
+
+# If set to true, players without a Mojang-signed public key will not be able
+# to connect to the server.
+#ENFORCE_SECURE_PROFILE=true
+
+# When this option is enabled, users who are not present on the whitelist
+# (if it's enabled) get kicked from the server after the server reloads the
+# whitelist file.
+# values: true|false
+#ENFORCE_WHITELIST=false
 
 # Controls how close entities need to be before being sent to clients.
 # values: 10-1000
@@ -51,6 +80,10 @@
 # Force players to join in the default game mode.
 # values: true|false
 #FORCE_GAMEMODE=false
+
+# Sets the default permission level for functions.
+# values: 1-4
+#FUNCTION_PERMISSION_LEVEL=2
 
 # Defines the mode of gameplay.
 # values: survical|creative|adventure|spectator
@@ -69,6 +102,9 @@
 # values: true|false
 #HARDCORE=false
 
+# If set to true, a player list is not sent on status requests.
+#HIDE_ONLINE_PLAYERS=false
+
 # The "level-name" value is used as the world name and its folder name.
 # values: STRING
 #LEVEL_NAME=world
@@ -78,13 +114,22 @@
 #LEVEL_SEED=""
 
 # Determines the type of map that is generated.
-# values: default|flat|largeBiomes|amplified
-#LEVEL_TYPE=default
+# values: normal|flat|large_biomes|amplified|...
+#LEVEL_TYPE=normal
 
-# The maximum height allowed for building. Terrain may still naturally generate
-# above a low height limit. 256 is the maximum possible, it also has to be a
-# multiple of 8.
-#MAX_BUILD_HEIGHT:-256
+# Limiting the amount of consecutive neighbor updates before skipping additional
+# ones. Negative values remove the limit.
+#MAX_CHAINED_NEIGHBOR_UPDATES=1000000
+
+# The maximum number of players that can play on the server at the same time.
+# More players = more resource consumption.
+# values: 0-2147483647
+#MAX_PLAYERS=20
+
+# The maximum number of milliseconds a single tick may take before the server
+# watchdog stops.
+# values: -1|INTEGER
+#MAX_TICK_TIME=60000
 
 # This sets the maximum possible size in blocks, expressed as a radius, that the
 # world border can obtain.
@@ -96,37 +141,49 @@
 # values: STRING
 #MOTD=A Minecraft Server
 
+# Packet size threshold for packet compression.
+# values: -1|INTEGER
+#NETWORK_COMPRESSION_THRESHOLD=256
+
+# Server checks connecting players against Minecraft account database.
+# values: true|false
+#ONLINE_MODE=true
+
+# Sets the default permission level for ops when using /op.
+# values: 1-4
+#OP_PERMISSION_LEVEL=4
+
+# If non-zero, players are kicked from the server if they are idle for more than
+# that many minutes.
+#PLAYER_IDLE_TIMEOUT=0
+
+# Server prevents users from using vpns or proxies.
+# values: true|false
+#PREVENT_PROXY_CONNECTIONS=false
+
+# If set to true, chat preview will be enabled.
+#PREVIEWS_CHAT=false
+
 # Enable PvP on the server. Players shooting themselves with arrows receive
 # damage only if PvP is enabled.
 # values: true|false
 #PVP=true
 
-# Determines if animals can spawn.
-# values: true|false
-#SPAWN_ANIMALS="true"
+# Sets the port for the query server.
+# values: PORT
+#QUERY_PORT=25565
 
-# Determines if monsters can spawn.
-# values: true|false
-#SPAWN_MONSTERS=true
+# Sets the maximum amount of packets a user can send before getting kicked.
+# Setting to 0 disables this feature.
+#RATE_LIMIT=0
 
-# Determines whether villagers can spawn.
-# values: true|false
-#SPAWN_NPCS=true
+# Sets the password for RCON.
+# values: STRING
+#RCON_PASSWORD=""
 
-# Determines the side length of the square spawn protection area as 2x+1.
-# Setting this to 0 disables the spawn protection. A value of 1 protects a 3×3
-# square centered on the spawn point. 2 protects 5×5, 3 protects 7×7, etc. If
-# there are no ops set on the server, the spawn protection is disabled
-# automatically as well.
-#SPAWN_PROTECTION=16
-
-# Sets the amount of world data the server sends the client, measured in chunks
-# in each direction of the player.
-#VIEW_DISTANCE=10
-
-################################################
-# Resource Packs                               #
-################################################
+# Sets the RCON network port.
+# values: PORT
+#RCON_PORT=25575
 
 # Optional URI to a resource pack. The player may choose to use it.
 # values: URL|URI
@@ -147,91 +204,6 @@
 # values: true|false
 #REQUIRE_RESOURCE_PACK="false"
 
-################################################
-# Player & Operators                           #
-################################################
-
-# Send console command outputs to all online operators.
-# values: true|false
-#BROADCAST_CONSOLE_TO_OPS=true
-
-# Send rcon console command outputs to all online operators.
-# values: true|false
-#BROADCAST_RCON_TO_OPS=true
-
-# When this option is enabled, users who are not present on the whitelist
-# (if it's enabled) get kicked from the server after the server reloads the
-# whitelist file.
-# values: true|false
-#ENFORCE_WHITELIST=false
-
-# Sets the default permission level for functions.
-# values: 1-4
-#FUNCTION_PERMISSION_LEVEL=2
-
-# The maximum number of players that can play on the server at the same time.
-# More players = more resource consumption.
-# values: 0-2147483647
-#MAX_PLAYERS=20
-
-# Server checks connecting players against Minecraft account database.
-# values: true|false
-#ONLINE_MODE=true
-
-# Sets the default permission level for ops when using /op.
-# values: 1-4
-#OP_PERMISSION_LEVEL=4
-
-# If non-zero, players are kicked from the server if they are idle for more than
-# that many minutes.
-#PLAYER_IDLE_TIMEOUT=0
-
-# Enables a whitelist on the server.
-# values: true|false
-#WHITE_LIST=false
-
-################################################
-# Server                                       #
-################################################
-
-# Enables GameSpy4 protocol server listener.
-# values: true|false
-#ENABLE_QUERY=false
-
-# Enables remote access to the server console. NOT recommended!
-# values: true|false
-#ENABLE_RCON=false
-
-# The maximum number of milliseconds a single tick may take before the server
-# watchdog stops.
-# values: -1|INTEGER
-#MAX_TICK_TIME=60000
-
-# Packet size threshold for packet compression.
-# values: -1|INTEGER
-#NETWORK_COMPRESSION_THRESHOLD=256
-
-# If the ISP/AS sent from the server is different from the one from Mojang
-# Studios' authentication server, the player is kicked.
-# values: true|false
-#PREVENT_PROXY_CONNECTIONS=false
-
-# Sets the port for the query server.
-# values: PORT
-#QUERY_PORT=25565
-
-# Sets the maximum amount of packets a user can send before getting kicked.
-# Setting to 0 disables this feature.
-#RATE_LIMIT=0
-
-# Sets the password for RCON.
-# values: STRING
-#RCON_PASSWORD=""
-
-# Sets the RCON network port.
-# values: PORT
-#RCON_PORT=25575
-
 # Set this if you want the server to bind to a particular IP.
 # values: IPADDRESS
 #SERVER_IP=
@@ -240,22 +212,47 @@
 # values: PORT
 #SERVER_PORT=25565
 
+# Sets the maximum distance from players that living entities may be located in
+# order to be updated by the server, measured in chunks in each direction of the
+# player (radius, not diameter).
+#SIMULATION_DISTANCE=10
+
 # Sets whether the server sends snoop data regularly to http://snoop.minecraft.net.
 # values: true|false
 #SNOOPER_ENABLED=false
+
+# Determines if animals can spawn.
+# values: true|false
+#SPAWN_ANIMALS="true"
+
+# Determines if monsters can spawn.
+# values: true|false
+#SPAWN_MONSTERS=true
+
+# Determines whether villagers can spawn.
+# values: true|false
+#SPAWN_NPCS=true
+
+# Determines the side length of the square spawn protection area as 2x+1.
+# Setting this to 0 disables the spawn protection. A value of 1 protects a 3×3
+# square centered on the spawn point. 2 protects 5×5, 3 protects 7×7, etc. If
+# there are no ops set on the server, the spawn protection is disabled
+# automatically as well.
+#SPAWN_PROTECTION=16
 
 # Enables synchronous chunk writes.
 # values: true|false
 #SYNC_CHUNK_WRITES=true
 
 # Linux server performance improvements: optimized packet sending/receiving on
-# Linux. 
+# Linux.
 # values: true|false
 #USE_NATIVE_TRANSPORT=true
 
-################################################
-# Debug                                     #
-################################################
+# Sets the amount of world data the server sends the client, measured in chunks
+# in each direction of the player.
+#VIEW_DISTANCE=10
 
+# Enables a whitelist on the server.
 # values: true|false
-#ENABLE_JMX_MONITORING=false
+#WHITE_LIST=false
