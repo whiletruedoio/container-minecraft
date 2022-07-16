@@ -21,6 +21,10 @@ Minecraft server as container image.
 Mojang AB or Microsoft Corporation. We are also NOT associated or connected
 with Mojang AB or Microsoft Corporation.
 
+The container does not include the server software, but will download it from
+[minecraft.net](https://minecraft.net). You also have to acknowledge the EULA,
+as explained below.
+
 ## Motivation
 
 Playing some games is relaxing and Minecraft is something we wanted to play.
@@ -108,7 +112,10 @@ $ docker run --detach --tty --publish 25565:25565 --env EULA=true \
 ```
 
 Since Mincecraft can be configured with several properties and options you can
-provide an environment file.
+provide an environment file. We have an example
+[envfile.sample](files/envfile.sample) included. The
+[Minecraft Wiki](https://minecraft.fandom.com/wiki/Server.properties) provides
+additional explanations for the properties.
 
 ```bash
 # Podman
@@ -121,14 +128,6 @@ $ docker run --detach --tty --publish 25565:25565 \
   --env-file=/path/to/file \
   docker.io/whiletruedoio/minecraft:latest
 ```
-
-### Variables
-
-Minecraft can be tuned and configured to your liking via server properties. You
-can adjust various settings and behavior. For a complete list of supported
-options, please have a look at the [envfile.sample](files/envfile.sample). The
-[Minecraft Wiki](https://minecraft.fandom.com/wiki/Server.properties) provides
-additional explanations for the properties.
 
 ### Administration
 
