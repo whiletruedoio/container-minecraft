@@ -2,8 +2,8 @@
 FROM docker.io/library/alpine:3
 
 # Minecraft Version used in entrypoint
-ENV MC_VER="1.19.1"
-ENV MC_URL="https://piston-data.mojang.com/v1/objects/8399e1211e95faa421c1507b322dbeae86d604df/server.jar"
+ENV MC_VER="1.19.2"
+ENV MC_URL="https://piston-data.mojang.com/v1/objects/f69c284232d7c7580bd89a5a4931c3581eae1378/server.jar"
 
 # Adding some while-true-do.io information
 LABEL io.while-true-do.site="https://while-true-do.io"
