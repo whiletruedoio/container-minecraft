@@ -87,7 +87,7 @@ stable_docker_builder:
             $CIRRUS_TAG != '' &&
             $CIRRUS_ENVIRONMENT != 'CLI'"
   depends_on:
-    - "Build"
+    - "Build Image"
   login_script: "docker login
                 --username $DOCKER_USERNAME
                 --password $DOCKER_PASSWORD
