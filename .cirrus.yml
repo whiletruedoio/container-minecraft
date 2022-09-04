@@ -50,6 +50,17 @@ env:
   # yamllint disable-line rule:line-length
   DOCKER_PASSWORD: "ENCRYPTED[!ba694a81b388c14ab792c378a7f32a36e3d216a393c4b67dcc7e3eadf76d7ec24d9b9ffe7c4cde7cea4abcd4b655e959!]"
 
+docker_builder:
+  name: "Build Image"
+  depends_on:
+    - "Lint Shell"
+    - "Lint Containerfile"
+    - "Scan Containerfile"
+  build_script: "docker image build
+                --cache-from $DOCKER_HUB_IMAGE
+                --tag $DOCKER_HUB_IMAGE:$CIRRUS_CHANGE_IN_REPO
+                container/"
+
 # Release
 devel_docker_builder:
   name: "Deliver Devel Image"
@@ -57,10 +68,7 @@ devel_docker_builder:
             $CIRRUS_TAG == '' &&
             $CIRRUS_ENVIRONMENT != 'CLI'"
   depends_on:
-    - "Lint Shell"
-    - "Lint Containerfile"
-    - "Scan Containerfile"
-  info_script: "docker info"
+    - "Build Image"
   login_script: "docker login
                 --username $DOCKER_USERNAME
                 --password $DOCKER_PASSWORD
@@ -79,10 +87,7 @@ stable_docker_builder:
             $CIRRUS_TAG != '' &&
             $CIRRUS_ENVIRONMENT != 'CLI'"
   depends_on:
-    - "Lint Shell"
-    - "Lint Containerfile"
-    - "Scan Containerfile"
-  info_script: "docker info"
+    - "Build"
   login_script: "docker login
                 --username $DOCKER_USERNAME
                 --password $DOCKER_PASSWORD

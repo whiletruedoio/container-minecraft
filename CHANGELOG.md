@@ -9,6 +9,27 @@ This file is the changelog of
 
 ## [Unreleased]
 
+## [1.19.2] - 20220904
+
+Bump minecraft version to 1.19.2.
+
+### Added
+
+- dedicated build step in CI/CD for local build testing
+
+### Changed
+
+- version: 1.19.2
+- url to new 1.19.2 uri
+
+## [1.19.1] - 20220728
+
+Bump minecraft version to 1.19.1.
+
+### Changed
+
+- version: 1.19.1
+
 ## [1.19.0] - 20220716
 
 This release includes Minecraft 1.19 and also some minor adjustments for the
